@@ -12,22 +12,23 @@
 			<h1>Movies List</h1>
 		</nav>
 
-		<div>
-			<div class="row">
-				<div>
-					Unwatched
-				</div>
-				<div>
-					<form action="">
-						<input type="text" placeholder="Add Movie Title">
-					</form>
+		<div class="row">
+			<div class="col-xs-6" ng-controller="UnwatchedCtrl">
+				<div class="panel">
+				Unwatched
+			
+					<div>
+						<form action="" ng-submit>
+							<input type="text" placeholder="Add Movie Title">
+						</form>
+					</div>
+
+					<ul ng-repeat="movie in movies">
+						<li>{{movie.title}}</li>
+					</ul>
 				</div>
 			</div>
 		</div>
-
-		<ul ng-repeat="">
-			<li></li>
-		</ul>
 	</div>
 	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
