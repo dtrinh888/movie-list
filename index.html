@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Movie List</title>
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bower_components/bootswatch/paper/bootstrap.min.css">
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
@@ -14,18 +16,45 @@
 
 		<div class="row">
 			<div class="col-xs-6" ng-controller="UnwatchedCtrl">
-				<div class="panel">
-				Unwatched
-			
-					<div>
-						<form action="" ng-submit>
-							<input type="text" placeholder="Add Movie Title">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Unwatched
+					</div>
+
+					<div class="panel-body">
+						<form ng-submit="add(title); title=''">
+							<div class="input-group input-group-sm">
+								<input type="text" class="form-control" placeholder="Add Movie Title" ng-model="title">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">
+										<i class="fa fa-fw fa-plus"></i>
+									</button>
+								</span>
+							</div>
 						</form>
 					</div>
 
-					<ul ng-repeat="movie in movies">
-						<li>{{movie.title}}</li>
+					<ul class="list-group">
+						<li class="list-group-item" ng-repeat="movie in movies | filter:{watched: false}">
+							{{movie.title}}
+							<span class="pull-right">
+								<button class="btn btn-danger btn-xs" title="Remove from List" ng-click="remove(movie.title)">
+									<i class="fa fa-fw fa-trash"></i>
+								</button>
+								<button class="btn btn-primary" title="Mark as Watched" ng-click="movie.watched = true;">
+									<i class="fa fa-fw fa-eye"></i>
+								</button>
+							</span>
+						</li>
 					</ul>
+				</div>
+			</div>
+			
+			<div class="col-xs-6" ng-controller="WatchedCtrl">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Watched
+					</div>
 				</div>
 			</div>
 		</div>

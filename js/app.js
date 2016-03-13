@@ -31,6 +31,7 @@ var MovieList = angular.module('MovieList', [])
  * ]
  */
 
+
  all: function(){
  	return m.movies;
  },
@@ -87,10 +88,14 @@ var MovieList = angular.module('MovieList', [])
   	}
   }
  };
+
+  return m;
+
 }])
 
 .controller('UnwatchedCtrl', ['$scope', 'MoviesFactory', function($scope, Movies){
 	$scope.movies = Movies.all();
+	console.log('m', $scope.movies);
 	$scope.add = Movies.add;
 	$scope.remove = Movies.remove;
 }])
