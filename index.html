@@ -49,12 +49,21 @@
 					</ul>
 				</div>
 			</div>
-			
+
 			<div class="col-xs-6" ng-controller="WatchedCtrl">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						Watched
 					</div>
+					<ul class="list-group">
+						<li class="list-group-item" ng-repeat="movie in movies | filter:{watched: true}">{{movie.title}}
+							<span class="pull-right">
+								<button class="btn btn-danger btn-xs" title="Remove from List" ng-click="remove(movie.title)">
+									<i class="fa fa-fw fa-eye-slash"></i>
+								</button>
+							</span>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
